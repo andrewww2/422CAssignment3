@@ -58,7 +58,7 @@ public class Main {
 		for (int k = 0; k < 2; k++){
 			String word = keyboard.next();
 			if (word.equals("/quit")){
-				System.out.println("quitting");
+				System.out.println);
 				return inputs; //return empty array List
 			}
 			inputs.add(word);
@@ -108,27 +108,4 @@ public class Main {
 	}
 	// TODO
 	// Other private static methods here
-	
-	/**
-	  * This method gets the user's input after he/she presses enter. 
-	  * Also prints out a prompt for the user
-	  * @param Scanner object connected to keyboard
-	  * @return String that the user entered
-	  */
-	private static boolean isRelated (String currWord, String nextWord){
-		// check if words are the same length. Words should be 5 chars long for this lab
-		if (currWord.length() != nextWord.length())
-			return false;
-		
-		int diffs = 0;
-		for (int i = 0; i < currWord.length(); i++){
-			if (currWord.charAt(i) != nextWord.charAt(i)){
-				diffs++;
-			}
-		}
-		
-		if (diffs == 1)
-			return true;
-		return false;  // should not encounter same word again
-	}
 }
