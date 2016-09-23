@@ -35,7 +35,7 @@ public class Main {
 			ps = System.out;			// default to Stdout
 		}
 		initialize();
-		
+		getWordLadderDFS("a","b");
 		// TODO methods to read in words, output ladder
 	}
 	
@@ -70,7 +70,33 @@ public class Main {
 		
 		// TODO some code
 		Set<String> dict = makeDictionary();
-		// TODO more code
+		Queue<String> queue = new LinkedList<String>();
+		queue.add(start);
+		int wordsInLayer = 1;
+		boolean endFound = false;
+		while ((wordsInLayer > 0) && (!endFound)) {
+			wordsInLayer = 0;
+			int currentLength = queue.size();
+			for (int i; i < currentLength; i++) {
+				String currentWord = queue.remove();
+				for (String dictWord : dict) {
+					if (isRelated(currentWord, dictWord)) {
+						queue.add(dictWord);
+						wordsInLayer++;
+						if (dictWord == end) {
+							endFound = true;
+						}
+					}
+				}
+			}
+		}
+		
+		if (endFound) {
+			System.out.println("End Found");
+		}
+		else {
+			System.out.println("End Not Found");
+		}
 		
 		return null; // replace this line later with real return
 	}
